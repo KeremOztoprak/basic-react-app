@@ -4,10 +4,10 @@ import Anasayfa from './Home';
 function App() {
   return (
     <div className="App">
-     
+
       <Navbar />
       <div className="content">
-      <Anasayfa />
+        <Anasayfa />
       </div>
     </div>
   );
