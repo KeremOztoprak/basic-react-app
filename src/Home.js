@@ -4,37 +4,18 @@ import BlogList from "./BlogList";
 
 const Home = () => {
 
-    const [blogs, setBlogs] = useState([
-        {
-            ad: "Yeni Başlayanlar için C#",
-            Aciklama: "lorem ipsun",
-            yazar: "Bugs Bunny",
-            id: 1
-        },
-        {
-            ad: "React Öğreniyorum",
-            Aciklama: "lorem ipsun",
-            yazar: "Sylvester",
-            id: 2
-        },
-        {
-            ad: "İleri Seviye C#",
-            Aciklama: "lorem ipsun",
-            yazar: "Snoopy",
-            id: 3
-        },
-        {
-            ad: "MVC Öğreniyorum",
-            Aciklama: "lorem ipsun",
-            yazar: "Scooby-Doo",
-            id: 4
-        }
-    ])
+    const [blogs, setBlogs] = useState(null)
 
     useEffect(() => {
-        console.log('useEffect çalıştı');
-        console.log('blogs');
-    }, [blogs])
+        fetch('http://localhost:8000/yazilar')
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                //console.log(data);
+                setBlogs(data);
+            })
+    }, [])
 
     const handleClick = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id);
@@ -43,8 +24,7 @@ const Home = () => {
 
     return (
         <div className="home">
-            <BlogList bloglar={blogs} baslik="Bütün Yazılar" handleClick={handleClick} />
-            <br />
+            {blogs && <BlogList bloglar={blogs} baslik="Bütün Yazılar" handleClick={handleClick} />}
         </div>
     );
 }
