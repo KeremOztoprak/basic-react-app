@@ -62,3 +62,8 @@
   font-size: 50px;
   color: #ff793f;
 }
+
+.error {
+  color: crimson;
+  font-size: 50px;
+}
