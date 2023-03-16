@@ -67,3 +67,7 @@
   color: crimson;
   font-size: 50px;
 }
+
+.blog-preview a {
+  text-decoration: none;
+}
